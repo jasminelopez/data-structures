@@ -21,6 +21,7 @@ stackMethods.push = function(val) {
 stackMethods.pop = function() {
   this.val = this.pancakes[(this.len - 1)];
   delete this.pancakes[(this.len - 1)];
+  this.len--;
   return this.val;
 };
 stackMethods.size = function() {
