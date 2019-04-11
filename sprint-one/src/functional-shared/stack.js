@@ -14,6 +14,7 @@ var Stack = function() {
 
 
 var stackMethods = {};
+
 stackMethods.push = function(val) {
   this.pancakes[this.len] = val;
   this.len++;
@@ -29,6 +30,5 @@ stackMethods.size = function() {
     return 0;
   }
   return this.len;
-
 };
 
