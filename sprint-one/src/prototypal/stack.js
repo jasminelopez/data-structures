@@ -1,5 +1,3 @@
-
-
 var Stack = function() {
   var obj = {};
 

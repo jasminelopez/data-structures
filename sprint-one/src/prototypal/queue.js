@@ -3,7 +3,6 @@ var Queue = function() {
 
   Object.setPrototypeOf(obj, queueMethods);
 
-  
   obj.storage = {};
   obj.index = 0;
   obj.len = 0;
