@@ -12,7 +12,7 @@ var Queue = function() {
     index++;
     size++;
   };
-
+  
   someInstance.dequeue = function() {
     var keys = Object.keys(storage);
     var minKey = Math.min(...keys);
