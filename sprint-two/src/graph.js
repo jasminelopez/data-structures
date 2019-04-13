@@ -1,5 +1,3 @@
-
-
 // Instantiate a new graph
 var Graph = function(value) { 
   if (value) {
@@ -15,14 +13,13 @@ var Graph = function(value) {
 // }
 // Add a node to the graph, passing in the node's value.
 
-Graph.prototype.addNode = function(value) {  //addNode(1)
+Graph.prototype.addNode = function(value) {  
   var newNode = new Graph(value);
-  this[value] = newNode; // '5': {}
+  this[value] = newNode;
 };
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 
 Graph.prototype.contains = function(value) {
-  //Key value '1'
   if (this[value]) {
     return true;
   } else {
@@ -32,6 +29,11 @@ Graph.prototype.contains = function(value) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(value) {
+  var container = this;
+  var edgeArray = this[value].edges;
+  edgeArray.forEach(function(edge) {
+    container.removeEdge(value, edge);
+  });
   delete this[value];
 };
 
@@ -51,10 +53,24 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
+
+  var removeFromNode = this[fromNode].edges.indexOf(toNode); 
+  this[fromNode].edges.splice(removeFromNode, 1);
+
+  var removeToNode = this[toNode].edges.indexOf(fromNode); 
+  this[toNode].edges.splice(removeToNode, 1);
+  
 };
 
 // Pass in a callback which will be executed on each node of the graph.
-Graph.prototype.forEachNode = function(cb) {
+Graph.prototype.forEachNode = function(callback) {
+
+  var keys = Object.keys(this); 
+  var container = this;
+
+  keys.map(function(node) {
+    return callback.call(container, node);
+  });
 };
 
 /*
