@@ -14,6 +14,7 @@ describe('hashTable', function() {
   });
 
   it('should store values that were inserted', function() {
+    console.log(hashTable);
     hashTable.insert('Steven', 'Seagal');
     expect(hashTable.retrieve('Steven')).to.equal('Seagal');
   });
